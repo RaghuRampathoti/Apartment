@@ -13,7 +13,6 @@ import {
   IoHomeOutline as HomeIcon,
   IoBasketballOutline as ClubIcon,
   IoCheckmarkDoneOutline as VoteIcon,
-  IoCheckmarkOutline as CheckIcon,
   IoCloseOutline as XIcon,
   IoShieldOutline as ShieldIcon,
   IoCashOutline as RupeeIcon,
@@ -233,6 +232,7 @@ export default function AdminDashboard() {
   const [isEditingStaff, setIsEditingStaff] = useState(false);
   const [editStaffId, setEditStaffId] = useState(null);
   const [noticeFile, setNoticeFile] = useState(null);
+  // eslint-disable-next-line no-unused-vars
   const [uploadingNoticeFile, setUploadingNoticeFile] = useState(false);
 
   const [viewImage, setViewImage] = useState(null);
