@@ -40,7 +40,7 @@ public class SecurityConfig {
                         .requestMatchers("/api/admin/**").hasAnyRole("ADMIN", "SUPER_ADMIN")
                         .requestMatchers("/api/user/**").hasAnyRole("RESIDENT", "SUPER_ADMIN", "TENANT")
                         .requestMatchers("/api/security/**").hasAnyRole("SECURITY", "SUPER_ADMIN")
-                        .requestMatchers("/api/auth/**", "/api/inquiries/**", "/api/demos/**").permitAll()
+                        .requestMatchers("/api/auth/**", "/api/inquiries/**", "/api/demos/**", "/error").permitAll()
                         .requestMatchers("/api/apartments/public-list").permitAll()
                         .requestMatchers("/api/apartments/**", "/api/users/**").hasRole("SUPER_ADMIN")
                         .anyRequest().authenticated())
