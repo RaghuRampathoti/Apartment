@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const isLocalhost = window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1";
-const API_BASE_URL = process.env.REACT_APP_API_URL || (isLocalhost ? "http://localhost:8080/api" : "https://ams-project-bvag.onrender.com/api");
+const API_BASE_URL = process.env.REACT_APP_API_URL || (isLocalhost ? "http://localhost:8080/api" : "https://apartment-0deg.onrender.com/api");
 
 const axiosInstance = axios.create({
   baseURL: API_BASE_URL,
