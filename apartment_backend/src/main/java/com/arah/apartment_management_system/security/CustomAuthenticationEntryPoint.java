@@ -26,7 +26,7 @@ public class CustomAuthenticationEntryPoint implements AuthenticationEntryPoint 
         response.setContentType("application/json");
 
         Map<String, Object> error = Map.of(
-                "timestamp", LocalDateTime.now(),
+                "timestamp", LocalDateTime.now().toString(),
                 "status", 401,
                 "error", "Unauthorized",
                 "message", "Authentication required",
