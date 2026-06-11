@@ -16,4 +16,10 @@ public class DashboardStats {
     private long totalResidents;
     private long totalStaff;
     private long activeComplaints;
+    private long totalInquiries;
+    private long newInquiries;
+    private long totalDemos;
+    private long scheduledDemos;
+    private long totalSubscriptions;
+    private double totalRevenue;
 }

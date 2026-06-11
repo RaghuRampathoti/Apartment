@@ -17,4 +17,5 @@ public interface MaintenanceRepository extends JpaRepository<Maintenance, Long>,
     Page<Maintenance> findByFlatId(Long flatId, Pageable pageable);
 
     List<Maintenance> findByFlat(Flat flat);
+    List<Maintenance> findByFlatAndPaymentStatusIn(Flat flat, List<com.arah.apartment_management_system.enums.PaymentStatus> statuses);
 }

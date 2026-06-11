@@ -40,9 +40,11 @@ public class Tenant {
     private LocalDate moveOutDate;
 
     @Column
+    @Builder.Default
     private Boolean isActive = true;
 
     @Column
+    @Builder.Default
     private Boolean isEmployee = false;
 
     @Column

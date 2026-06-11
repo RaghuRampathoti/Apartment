@@ -13,7 +13,6 @@ public interface NoticeResponseRepository extends JpaRepository<NoticeResponse, 
     boolean existsByNoticeIdAndResidentUsernameAndIsRsvp(Long noticeId, String username, boolean isRsvp);
 
     long countByNoticeIdAndIsRsvp(Long noticeId, boolean isRsvp);
-
     @org.springframework.transaction.annotation.Transactional
     void deleteByNoticeId(Long noticeId);
 }

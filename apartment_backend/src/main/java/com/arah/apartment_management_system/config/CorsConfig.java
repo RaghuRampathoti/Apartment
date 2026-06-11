@@ -16,7 +16,10 @@ public class CorsConfig {
 
         configuration.setAllowedOrigins(List.of(
                 "http://localhost:3000",
-                "https://secure-gate-lr.netlify.app"));
+                "http://localhost:5173",
+                "https://secure-gate-lr.netlify.app",
+                "https://apartment-pi.vercel.app"
+        ));
 
         configuration.setAllowedMethods(List.of(
                 "GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"));

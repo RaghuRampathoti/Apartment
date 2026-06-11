@@ -40,6 +40,9 @@ public class ApartmentServiceImpl implements ApartmentService {
         private final FlatRepository flatRepository;
         private final UserRepository userRepository;
         private final ComplaintRepository complaintRepository;
+        private final ClientInquiryRepository clientInquiryRepository;
+        private final DemoRequestRepository demoRequestRepository;
+        private final ApartmentSubscriptionRepository apartmentSubscriptionRepository;
 
         @Override
         public ApartmentResponseDTO createApartment(ApartmentRequestDTO request) {
@@ -205,6 +208,12 @@ public class ApartmentServiceImpl implements ApartmentService {
                                                                 .size())
                                 .activeComplaints(complaintRepository.countByStatusIn(
                                                 List.of(ComplaintStatus.PENDING, ComplaintStatus.IN_PROGRESS)))
+                                .totalInquiries(clientInquiryRepository.count())
+                                .newInquiries(clientInquiryRepository.findAll().stream().filter(i -> "NEW".equals(i.getStatus())).count())
+                                .totalDemos(demoRequestRepository.count())
+                                .scheduledDemos(demoRequestRepository.findAll().stream().filter(d -> "SCHEDULED".equals(d.getStatus())).count())
+                                .totalSubscriptions(apartmentSubscriptionRepository.count())
+                                .totalRevenue(apartmentSubscriptionRepository.findAll().stream().mapToDouble(s -> s.getPricePaid() != null ? s.getPricePaid() : 0.0).sum())
                                 .build();
         }
 

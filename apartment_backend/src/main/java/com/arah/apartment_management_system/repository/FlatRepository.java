@@ -13,4 +13,5 @@ public interface FlatRepository extends JpaRepository<Flat, Long> {
     Page<Flat> findByBlock_Apartment_Id(Long apartmentId, Pageable pageable);
 
     Page<Flat> findByBlock_Apartment_IdAndFlatNumberContainingIgnoreCase(Long apartmentId, String flatNumber, Pageable pageable);
+    java.util.List<Flat> findByStatus(com.arah.apartment_management_system.enums.FlatStatus status);
 }
