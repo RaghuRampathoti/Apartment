@@ -8,8 +8,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.security.access.AccessDeniedException;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -25,7 +23,6 @@ import com.arah.apartment_management_system.exception.ResourceNotFoundException;
 import com.arah.apartment_management_system.repository.AllotmentRepository;
 import com.arah.apartment_management_system.repository.BlockRepository;
 import com.arah.apartment_management_system.repository.FlatRepository;
-import com.arah.apartment_management_system.security.CustomUserDetails;
 import com.arah.apartment_management_system.service.FlatService;
 import com.arah.apartment_management_system.service.UserService;
 import com.arah.apartment_management_system.util.ApiResponse;
@@ -35,6 +32,7 @@ import com.arah.apartment_management_system.mapper.FlatMapper;
 @Service
 @RequiredArgsConstructor
 @Transactional
+@SuppressWarnings("null")
 public class FlatServiceImpl implements FlatService {
 
     private final FlatRepository flatRepository;

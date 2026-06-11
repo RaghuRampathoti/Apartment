@@ -22,6 +22,7 @@ import lombok.RequiredArgsConstructor;
 @Service
 @RequiredArgsConstructor
 @Transactional
+@SuppressWarnings("null")
 public class FacilityServiceImpl implements FacilityService {
 
     private final FacilityRepository facilityRepository;

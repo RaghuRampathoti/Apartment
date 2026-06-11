@@ -32,6 +32,7 @@ import lombok.RequiredArgsConstructor;
 @Service
 @RequiredArgsConstructor
 @Transactional
+@SuppressWarnings("null")
 public class ClubhouseBookingServiceImpl implements ClubhouseBookingService {
 
     private final ClubhouseBookingRepository clubhouseBookingRepository;

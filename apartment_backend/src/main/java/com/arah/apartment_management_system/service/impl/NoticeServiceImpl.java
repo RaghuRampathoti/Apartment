@@ -21,6 +21,7 @@ import lombok.RequiredArgsConstructor;
 
 @Service
 @RequiredArgsConstructor
+@SuppressWarnings("null")
 public class NoticeServiceImpl implements NoticeService {
 	private final NoticeRepository noticeRepository;
 	private final NoticeResponseRepository noticeResponseRepository;

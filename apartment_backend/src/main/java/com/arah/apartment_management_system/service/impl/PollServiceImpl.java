@@ -27,6 +27,7 @@ import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
+@SuppressWarnings("null")
 public class PollServiceImpl implements PollService {
 
     private final UserRepository userRepository;

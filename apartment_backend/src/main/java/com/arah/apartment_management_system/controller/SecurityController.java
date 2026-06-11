@@ -37,6 +37,7 @@ import lombok.RequiredArgsConstructor;
 @RequestMapping("/api/security")
 @RequiredArgsConstructor
 @PreAuthorize("hasRole('SECURITY')")
+@SuppressWarnings("null")
 public class SecurityController {
 
     private final UserService userService;

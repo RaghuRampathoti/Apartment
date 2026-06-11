@@ -21,6 +21,7 @@ import lombok.RequiredArgsConstructor;
 
 @Service
 @RequiredArgsConstructor
+@SuppressWarnings("null")
 public class BlockServiceImpl implements BlockService {
 
     private final BlockRepository blockRepository;

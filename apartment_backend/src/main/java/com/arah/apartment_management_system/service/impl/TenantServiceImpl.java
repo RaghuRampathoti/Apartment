@@ -28,6 +28,8 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 @Transactional
+// Suppress null warnings for Spring Data Repository / Lombok null safety
+@SuppressWarnings("null")
 public class TenantServiceImpl implements TenantService {
 
     private final TenantRepository tenantRepository;

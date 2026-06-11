@@ -30,6 +30,7 @@ import lombok.RequiredArgsConstructor;
 
 @Service
 @RequiredArgsConstructor
+@SuppressWarnings("null")
 public class MaintenanceServiceImpl implements MaintenanceService {
 
         private final MaintenanceRepository maintenanceRepository;

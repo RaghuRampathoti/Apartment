@@ -19,6 +19,8 @@ import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
+// Suppress null warnings for Spring Data Repository / Lombok null safety
+@SuppressWarnings("null")
 public class SubscriptionServiceImpl implements SubscriptionService {
 
     private final ApartmentSubscriptionRepository subscriptionRepository;

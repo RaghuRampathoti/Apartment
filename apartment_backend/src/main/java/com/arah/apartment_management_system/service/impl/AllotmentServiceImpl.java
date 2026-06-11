@@ -18,6 +18,7 @@ import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
+@SuppressWarnings("null")
 public class AllotmentServiceImpl implements AllotmentService {
 
     private final AllotmentRepository allotmentRepository;

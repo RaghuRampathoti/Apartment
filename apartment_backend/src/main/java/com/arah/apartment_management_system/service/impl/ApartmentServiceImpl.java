@@ -32,6 +32,7 @@ import com.arah.apartment_management_system.enums.UserStatus;
 
 @Service
 @RequiredArgsConstructor
+@SuppressWarnings("null")
 public class ApartmentServiceImpl implements ApartmentService {
 
         private final ApartmentRepository apartmentRepository;

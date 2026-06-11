@@ -29,6 +29,7 @@ import java.util.stream.Collectors;
 @Service
 @RequiredArgsConstructor
 @Transactional
+@SuppressWarnings("null")
 public class MaintenanceRequestServiceImpl implements MaintenanceRequestService {
 
     private final MaintenanceServiceRequestRepository repository;
