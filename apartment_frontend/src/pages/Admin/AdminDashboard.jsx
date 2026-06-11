@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
-import { PieChart, Pie, Cell, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import { PieChart, Pie, Cell, Tooltip, ResponsiveContainer } from 'recharts';
 import {
   IoPersonOutline as UserIcon,
   IoGridOutline as GridIcon,
@@ -22,7 +22,7 @@ import {
   IoLogOutOutline as DoorIcon,
   IoCheckmarkCircleOutline as CheckCircleIcon,
   IoCarOutline,
-  IoFlashOutline, IoPulseOutline, IoHomeOutline as IoHomeIo, IoNotificationsOutline, IoAlertCircleOutline, IoCalendarOutline, IoShieldCheckmarkOutline, IoPaperPlaneOutline, IoMailUnreadOutline, IoEyeOffOutline,
+  IoFlashOutline, IoPulseOutline, IoHomeOutline as IoHomeIo, IoNotificationsOutline, IoAlertCircleOutline, IoCalendarOutline, IoShieldCheckmarkOutline, IoPaperPlaneOutline, IoMailUnreadOutline,
   IoStarOutline as CrownIcon,
   IoLockClosedOutline as LockIcon
 } from "react-icons/io5";
@@ -1244,8 +1244,8 @@ export default function AdminDashboard() {
                       )}
                       <div className="mt-12 flex items-center justify-end gap-4 border-t border-slate-100 pt-10">
                         <button className="px-8 py-4 rounded-2xl font-black text-teal-600 bg-teal-50 hover:bg-teal-100 hover:text-teal-700 transition-all active:scale-95" onClick={closeNoticeModal}>Discard</button>
-                        <button className={`px-10 py-4 bg-primary text-white rounded-2xl font-black shadow-xl shadow-indigo-600/20 hover:bg-primary-hover transition-all active:scale-95 flex items-center gap-3 ${noticeMutation.isPending ? 'opacity-70 cursor-not-allowed' : ''}`} onClick={handleNoticeSubmit} disabled={noticeMutation.isPending}>
-                          {noticeMutation.isPending ? 'Publishing...' : <><span className="text-xl"><IoPaperPlaneOutline size={20} /></span> Publish to Residents</>}
+                        <button className={`px-10 py-4 bg-primary text-white rounded-2xl font-black shadow-xl shadow-indigo-600/20 hover:bg-primary-hover transition-all active:scale-95 flex items-center gap-3 ${(noticeMutation.isPending || uploadingNoticeFile) ? 'opacity-70 cursor-not-allowed' : ''}`} onClick={handleNoticeSubmit} disabled={noticeMutation.isPending || uploadingNoticeFile}>
+                          {noticeMutation.isPending ? 'Publishing...' : uploadingNoticeFile ? 'Uploading attachment...' : <><span className="text-xl"><IoPaperPlaneOutline size={20} /></span> Publish to Residents</>}
                         </button>
                       </div>
                     </div>
@@ -1563,6 +1563,8 @@ export default function AdminDashboard() {
           </div>
         </div>
       )}
+      {/* Toast container for notifications */}
+      <ToastContainer toasts={toasts} removeToast={removeToast} />
     </div>
   );
 }

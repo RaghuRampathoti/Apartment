@@ -1,25 +1,21 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import axiosInstance from "../../utils/axiosConfig";
 import "./ResidentPolls.css";
 import { PieChart, Pie, Tooltip, Legend, ResponsiveContainer, Cell } from "recharts";
+
+const isPollActive = (status, endDate) => {
+    const end = new Date(endDate);
+    end.setHours(23, 59, 59, 999);
+    const isExpired = end < new Date();
+    return status === 'ACTIVE' && !isExpired;
+};
 
 export default function ResidentPolls() {
     const [polls, setPolls] = useState([]);
     const [votedPolls, setVotedPolls] = useState({});
     const [shownResults, setShownResults] = useState({});
 
-    useEffect(() => {
-        loadPolls();
-    }, []);
-
-    const isPollActive = (status, endDate) => {
-        const end = new Date(endDate);
-        end.setHours(23, 59, 59, 999);
-        const isExpired = end < new Date();
-        return status === 'ACTIVE' && !isExpired;
-    };
-
-    const loadPolls = async () => {
+    const loadPolls = useCallback(async () => {
         try {
             const response = await axiosInstance.get("/user/polls");
             const allPolls = response.data.data || [];
@@ -39,7 +35,11 @@ export default function ResidentPolls() {
         } catch (error) {
             console.error("Failed to load polls", error);
         }
-    };
+    }, []);
+
+    useEffect(() => {
+        loadPolls();
+    }, [loadPolls]);
 
     const handleVote = async (pollId, option) => {
         try {

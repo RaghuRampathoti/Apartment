@@ -64,7 +64,6 @@ export default function ResidentDashboard() {
   const [notices, setNotices] = useState([]);
   // Subscription gating
   const [activeSub, setActiveSub] = useState(null);
-  const [subLoaded, setSubLoaded] = useState(false);
   const residentAllowed = RESIDENT_PLAN_ACCESS[activeSub?.plan] || RESIDENT_PLAN_ACCESS["STARTER"];
   const [noticeResponses, setNoticeResponses] = useState({});
   const [rsvpedNotices, setRsvpedNotices] = useState(new Set());
@@ -413,8 +412,7 @@ export default function ResidentDashboard() {
     if (!user?.managedApartmentId) return;
     axiosInstance.get(`/subscriptions/apartment/${user.managedApartmentId}/active`)
       .then(res => setActiveSub(res.data.data || null))
-      .catch(() => setActiveSub(null))
-      .finally(() => setSubLoaded(true));
+      .catch(() => setActiveSub(null));
   }, [user?.managedApartmentId]);
 
   const handleRaiseServiceRequest = async (e) => {

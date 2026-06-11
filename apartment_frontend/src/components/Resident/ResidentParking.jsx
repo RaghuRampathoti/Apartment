@@ -12,20 +12,20 @@ export default function ResidentParking() {
   };
 
   useEffect(() => {
+    const loadMySlots = async () => {
+      setLoading(true);
+      try {
+        const res = await axiosInstance.get("/user/parking/my-slots");
+        setSlots(res.data.data || []);
+      } catch {
+        showToast("Failed to load your parking slots", "error");
+      } finally {
+        setLoading(false);
+      }
+    };
+
     loadMySlots();
   }, []);
-
-  const loadMySlots = async () => {
-    setLoading(true);
-    try {
-      const res = await axiosInstance.get("/user/parking/my-slots");
-      setSlots(res.data.data || []);
-    } catch {
-      showToast("Failed to load your parking slots", "error");
-    } finally {
-      setLoading(false);
-    }
-  };
 
   const slotTypeLabel = (slot) => {
     if (slot.isTemporary) return "Temporary";

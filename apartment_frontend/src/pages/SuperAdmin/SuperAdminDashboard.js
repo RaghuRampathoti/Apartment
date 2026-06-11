@@ -144,26 +144,26 @@ function SuperAdminDashboard() {
         }
     };
 
-    const fetchAvailableApts = async () => {
-        try {
-            const res = await axiosInstance.get("/apartments/available");
-            let available = res.data.data || [];
-
-            if (editingAdmin && editingAdmin.managedApartmentId) {
-                const current = apartments.find(a => a.id === editingAdmin.managedApartmentId);
-                if (current && !available.some(a => a.id === current.id)) {
-                    available = [current, ...available];
-                }
-            }
-            setAvailableApartments(available);
-        } catch (err) { console.error("Error fetching available apartments", err); }
-    };
-
     useEffect(() => {
+        const fetchAvailableApts = async () => {
+            try {
+                const res = await axiosInstance.get("/apartments/available");
+                let available = res.data.data || [];
+
+                if (editingAdmin && editingAdmin.managedApartmentId) {
+                    const current = apartments.find(a => a.id === editingAdmin.managedApartmentId);
+                    if (current && !available.some(a => a.id === current.id)) {
+                        available = [current, ...available];
+                    }
+                }
+                setAvailableApartments(available);
+            } catch (err) { console.error("Error fetching available apartments", err); }
+        };
+
         if (showAdminModal) {
             fetchAvailableApts();
         }
-    }, [showAdminModal, editingAdmin]);
+    }, [showAdminModal, editingAdmin, apartments]);
 
     const handleCreateApartment = async (e) => {
         e.preventDefault();

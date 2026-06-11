@@ -66,7 +66,6 @@ export default function ManageMoveInOut() {
     });
 
     // Group allotments by flat to handle resident-tenant duplicates
-    const groupedAllotments = [];
     const map = new Map();
 
     filteredAllotments.forEach(item => {
